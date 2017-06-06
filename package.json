@@ -1,0 +1,41 @@
+{
+  "name": "rollup-standalone",
+  "version": "0.42.0",
+  "description": "standalone version for rollup",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run build",
+    "build": "npm-run-all -p build-rollup build-cli build-sm",
+    "build-rollup": "rollup -c scripts/rollup.config.js",
+    "build-cli": "node ./scripts/copy-cli && rollup -c scripts/rollup.cli.js",
+    "build-sm": "rollup -c scripts/rollup.sourcemap.js"
+  },
+  "bin": {
+    "rollup-cli": "./dist/rollup-cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jetiny/rollup-standalone.git"
+  },
+  "author": {
+    "name": "jetiny",
+    "email": "86287344@qq.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jetiny/rollup-standalone/issues"
+  },
+  "homepage": "https://github.com/jetiny/rollup-standalone#readme",
+  "devDependencies": {
+    "fs-extra": "^3.0.1",
+    "npm-run-all": "^4.0.2",
+    "rollup": "^0.42.0",
+    "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-babel-standalone": "^2.7.1",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-json": "^2.3.0",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-re": "^1.0.2",
+    "rollup-plugin-vue2": "^0.8.0"
+  }
+}
