@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "rimraf node_modules/rollup-standalone && npm i && rollup-cli -c"
+    "reset": "rimraf node_modules/rollup-standalone && npm i",
+    "test": "npm i && rollup-cli -c"
   },
   "author": "",
   "license": "ISC",
