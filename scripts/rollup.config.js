@@ -13,12 +13,12 @@ export default executeRollup({
     'babel-standalone-rollup',
     'acorn'
   ],
-  // uglifyOptions,
+  uglifyOptions,
   patterns: [
     { //------------------------------------acorn
       match: /rollup\-plugin\-commonjs/,
       test: `require('acorn')`,
-      replace: "'require_acorn'",
+      replace: '"require_acorn"',
       restore: "require('./acorn')"
     },
     { //------------------------------------vue
@@ -26,11 +26,16 @@ export default executeRollup({
       test: `try {
   var vueVersion = require('vue').version
 } catch (e) {}`,
-      replace: `var vueVersion = 'require_vue_version'`,
-      restore:`try {
-  var vueVersion = require('vue').version
-} catch (e) {}
-`
+      replace: `var vueVersion = "require_vue_version"`,
+      restore (code) {
+        return code.replace(`"require_vue_version"`, `
+(() => {
+  try {
+    return vueVersion = require('vue').version
+  } catch (e) {}
+})()
+`)
+      }
     },
     { //------------------------------------vue
       match: /vue\-template\-compiler/,
@@ -45,7 +50,7 @@ var packageVersion = "${vpkg.version}";
     { //------------------------------------babel-standalone
       match: /rollup\-plugin\-babel\-standalone/,
       test: `require('babel-standalone-rollup')`,
-      replace: "'require_babel-standalone-rollup'",
+      replace: '"require_babel-standalone-rollup"',
       restore: "require('./babel-standalone')"
     },
     { //------------------------------------resolve
@@ -57,7 +62,7 @@ var ES6_BROWSER_EMPTY = path.resolve( __dirname, 'empty-es.js' );`
     },
     { //------------------------------------uglify
       test:`require('./uglify.js')`,
-      replace:`'require_uglifyjs'`,
+      replace:`"require_uglifyjs"`,
       restore: `require('./uglify.js')`
     }
   ]
