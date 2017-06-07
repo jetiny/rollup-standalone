@@ -5,7 +5,8 @@
   "main": "dist/rollup-standalone.js",
   "scripts": {
     "test": "npm run build && cd test && npm test",
-    "build": "npm-run-all -p build-rollup build-cli build-sm",
+    "build": "rollup -c scripts/rollup-build.js",
+    "build-old": "npm-run-all -p build-rollup build-cli build-sm",
     "build-rollup": "rollup -c scripts/rollup.config.js",
     "build-cli": "node ./scripts/copy-cli && rollup -c scripts/rollup.cli.js",
     "build-sm": "rollup -c scripts/rollup.sourcemap.js"
@@ -36,6 +37,7 @@
     "rollup-plugin-json": "^2.3.0",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-re": "^1.0.2",
-    "rollup-plugin-vue2": "^0.8.0"
+    "rollup-plugin-vue2": "^0.8.0",
+    "uglify-es": "^3.0.15"
   }
 }
