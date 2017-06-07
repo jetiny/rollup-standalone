@@ -60,11 +60,6 @@ var ES6_BROWSER_EMPTY = path.resolve( __dirname, '../src/empty.js' );`,
       replace: `var COMMONJS_BROWSER_EMPTY = path.resolve( __dirname, 'empty-browser.js' );
 var ES6_BROWSER_EMPTY = path.resolve( __dirname, 'empty-es.js' );`
     },
-    { //------------------------------------uglify
-      test:`require('./uglify.js')`,
-      replace:`"require_uglifyjs"`,
-      restore: `require('./uglify.js')`
-    }
   ]
 }, () => {
   fse.ensureDir('dist').then(() => Promise.all([
