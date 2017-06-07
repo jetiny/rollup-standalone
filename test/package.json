@@ -4,11 +4,12 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "npm i && rollup-cli -c"
+    "test": "rimraf node_modules/rollup-standalone && npm i && rollup-cli -c"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "rimraf": "^2.6.1",
     "rollup-standalone": "../",
     "sav-util": "^1.0.21",
     "vue": "^2.3.3",

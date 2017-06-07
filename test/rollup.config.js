@@ -1,19 +1,16 @@
-import {babel, vue, commonjs, resolve} from 'rollup-standalone'
+import {executeRollup} from 'rollup-standalone'
 
-export default {
+export default executeRollup({
+  cli: true,
   entry: './app.js',
   dest: 'bundle.js',
   format: 'iife',
-  plugins: [
-    vue(),
-    babel({
-      babelrc: false,
-      externalHelpers: false,
-      exclude: 'node_modules/**'
-    }),
-    resolve({
-      main: true
-    }),
-    commonjs({})
+  vueOptions: true,
+  uglifyOptions: true,
+  patterns: [
+    {
+      test: 'process.env.NODE_ENV',
+      replace: "'production'"
+    }
   ]
-}
+})
