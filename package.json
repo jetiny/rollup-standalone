@@ -1,6 +1,6 @@
 {
   "name": "rollup-standalone",
-  "version": "0.42.5",
+  "version": "0.42.6",
   "description": "standalone version for rollup",
   "main": "dist/rollup-standalone.js",
   "scripts": {
