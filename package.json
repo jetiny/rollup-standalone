@@ -5,7 +5,8 @@
   "main": "dist/rollup-standalone.js",
   "scripts": {
     "test": "npm run build && cd test && npm test",
-    "build": "npm run build-uglify && npm run build-rollup",
+    "build": "npm run build-vue2 && npm run build-uglify && npm run build-rollup",
+    "build-vue2": "cd node_modules/rollup-plugin-vue2 && npm install && npm run build",
     "build-uglify": "node ./scripts/build-uglify",
     "build-rollup": "rollup -c scripts/rollup.config.js"
   },
@@ -34,7 +35,7 @@
     "rollup-plugin-json": "^2.3.0",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-re": "^1.0.6",
-    "rollup-plugin-vue2": "^0.8.0",
+    "rollup-plugin-vue2": "https://github.com/jetiny/rollup-plugin-vue2/tarball/master",
     "uglify-es": "^3.0.15"
   }
 }
