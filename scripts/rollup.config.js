@@ -64,17 +64,17 @@ var ES6_BROWSER_EMPTY = path.resolve( __dirname, 'empty-es.js' );`
     },
   ]
 }, (bundle, res) => {
-  res.code = res.code.replace(`var compiler = _interopDefault(require('vue-template-compiler'));`,
-    `var compiler;
-try {
-  compiler = _interopDefault(require('vue-template-compiler'));
-} catch (err) {}`)
+//   res.code = res.code.replace(`var compiler = _interopDefault(require('vue-template-compiler'));`,
+//     `var compiler;
+// try {
+//   compiler = _interopDefault(require('vue-template-compiler'));
+// } catch (err) {}`)
 
-  res.code = res.code.replace(`var transpile = _interopDefault(require('vue-template-es2015-compiler'));`,
-    `var transpile;
-try {
-  transpile = _interopDefault(require('vue-template-es2015-compiler'));
-} catch (err) {}`)
+//   res.code = res.code.replace(`var transpile = _interopDefault(require('vue-template-es2015-compiler'));`,
+//     `var transpile;
+// try {
+//   transpile = _interopDefault(require('vue-template-es2015-compiler'));
+// } catch (err) {}`)
 
   let bsr
   try {
