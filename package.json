@@ -4,9 +4,9 @@
   "description": "standalone version for rollup",
   "main": "dist/rollup-standalone.js",
   "scripts": {
-    "test": "npm run build && cd test && npm test",
-    "build": "npm run build-vue2 && npm run build-uglify && npm run build-rollup",
-    "build-vue2": "cd node_modules/rollup-plugin-vue2 && npm install && npm run build",
+    "test": "npm run build && rollup -c test/rollup.config.js",
+    "build": "npm run copy-vue2 && npm run build-uglify && npm run build-rollup",
+    "copy-vue2": "node ./scripts/copy-vue2.js",
     "build-uglify": "node ./scripts/build-uglify",
     "build-rollup": "rollup -c scripts/rollup.config.js"
   },
@@ -32,10 +32,18 @@
     "rollup": "^0.42.0",
     "rollup-plugin-babel-standalone": "^2.7.2",
     "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-includepaths": "^0.2.2",
     "rollup-plugin-json": "^2.3.0",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-re": "^1.0.6",
     "rollup-plugin-vue2": "https://github.com/jetiny/rollup-plugin-vue2/tarball/master",
-    "uglify-es": "^3.0.15"
+    "sav-util": "^1.0.21",
+    "uglify-es": "^3.0.15",
+    "vue": "^2.4.2",
+    "vue-router": "^2.7.0"
+  },
+  "dependencies": {
+    "vue-template-compiler": "^2.4.2",
+    "vue-template-es2015-compiler": "^1.5.3"
   }
 }

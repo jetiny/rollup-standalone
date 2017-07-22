@@ -1,9 +1,10 @@
-import {executeRollup} from 'rollup-standalone'
+const {executeRollup} = require('../')
+const path = require('path')
 
-export default executeRollup({
+module.exports = executeRollup({
   cli: true,
-  entry: './app.js',
-  dest: 'bundle.js',
+  entry: path.resolve(__dirname, './app.js'),
+  dest: path.resolve(__dirname, './bundle.js'),
   format: 'iife',
   vueOptions: true,
   uglifyOptions: true,
